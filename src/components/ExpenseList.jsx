@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { format } from 'date-fns';
 
 const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => {
     const [editMode, setEditMode] = useState(false);
@@ -28,6 +29,10 @@ const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => 
 
     const handleCategoryChange = (e) => {
         setSelectedExpense({ ...selectedExpense, category: e.target.value });
+    };
+
+    const formatDate = (date) => {
+        return format(new Date(date), 'yyyy-MM-dd HH:mm:ss'); // Example format: 2024-12-05 17:00:00
     };
 
     if (!expenses || expenses.length === 0) {
@@ -91,6 +96,12 @@ const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => 
                                 <div className="flex flex-col w-1/5">
                                     <span className="font-medium text-gray-700">Description</span>
                                     <span className="text-lg text-gray-800">{expense.description}</span>
+                                </div>
+                                <div className="flex flex-col w-1/5">
+                                    <span className="font-medium text-gray-700">Date</span>
+                                    <span className="text-lg text-gray-800">
+                                        {formatDate(expense.createdAt)}
+                                    </span>
                                 </div>
                                 <div className="flex space-x-3">
                                     <button

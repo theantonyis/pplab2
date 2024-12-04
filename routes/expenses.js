@@ -63,15 +63,13 @@ router.get('/filter', async (req, res) => {
         const query = {};
 
         if (startDate) {
-            query.date = { $gte: new Date(startDate) }; // Add $gte for start date
+            query.createdAt = { $gte: new Date(startDate) }; // Add $gte for start date
         }
 
         if (endDate) {
-            query.date = query.date || {}; // Ensure query.date exists before adding $lte
-            query.date.$lte = new Date(endDate); // Add $lte for end date
+            query.createdAt = query.createdAt || {}; // Ensure query.date exists before adding $lte
+            query.createdAt.$lte = new Date(endDate); // Add $lte for end date
         }
-
-        // console.log('Query:', query);
 
         const expenses = await Expense.find(query).populate('category', 'name');
         const totalAmount = expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0);
@@ -82,6 +80,7 @@ router.get('/filter', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
 
 
 module.exports = router;

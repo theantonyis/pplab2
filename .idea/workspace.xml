@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="CRUD operations is ready">
-      <change afterPath="$PROJECT_DIR$/src/components/FilterExpenses.jsx" afterDir="false" />
+    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="fixed some issues&#10;to-do:&#10;filter date to date&#10;filter and search by categories and dates&#10;export to pdf/csv">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/expenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/expenses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ExpenseList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +23,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "theantonyis"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;theantonyis&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/theantonyis/pplab2.git",
-    "accountId": "eb489c0d-9cc7-47a1-af73-a2101a7d6955"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/theantonyis/pplab2.git&quot;,
+    &quot;accountId&quot;: &quot;eb489c0d-9cc7-47a1-af73-a2101a7d6955&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -48,21 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "ts.external.directory.path": "C:\\Users\\antony\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/antony/WebstormProjects/pplab1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\antony\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -79,6 +80,9 @@
       <option name="presentableId" value="Default" />
       <updated>1733303865110</updated>
       <workItem from="1733303866312" duration="716000" />
+      <workItem from="1733339027531" duration="155000" />
+      <workItem from="1733340457886" duration="10000" />
+      <workItem from="1733350971141" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="working version">
       <option name="closed" value="true" />
@@ -96,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733317843576</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed some issues&#10;to-do:&#10;filter date to date&#10;filter and search by categories and dates&#10;export to pdf/csv">
+      <option name="closed" value="true" />
+      <created>1733321611562</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733321611562</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +128,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="working version" />
     <MESSAGE value="CRUD operations is ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD operations is ready" />
+    <MESSAGE value="fixed some issues&#10;to-do:&#10;filter date to date&#10;filter and search by categories and dates&#10;export to pdf/csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some issues&#10;to-do:&#10;filter date to date&#10;filter and search by categories and dates&#10;export to pdf/csv" />
   </component>
 </project>

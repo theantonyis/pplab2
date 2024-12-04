@@ -3,16 +3,12 @@ import React, { useState, useEffect } from 'react';
 import axios from '../axios';
 import AddExpense from './AddExpense';
 import ExpenseList from './ExpenseList';
-// import FilterExpenses from './FilterExpenses';
+import FilterExpenses from './FilterExpenses';
 
 const ExpenseManager = () => {
     const [expenses, setExpenses] = useState([]);
     const [categories, setCategories] = useState([]);
-    // const [totalAmount, setTotalAmount] = useState(0);
-
-    // const calculateTotalAmount = (expenses) => {
-    //     return expenses.reduce((sum, expense) => (sum + expense.amount || 0), 0);
-    // };
+    const [totalAmount, setTotalAmount] = useState(0);
 
     const fetchCategories = () => {
         axios.get('/categories')
@@ -29,24 +25,26 @@ const ExpenseManager = () => {
             .then((response) => {
                 const fetchedExpenses = response.data;
                 setExpenses(response.data);
-                // setTotalAmount(fetchedExpenses);
+                setTotalAmount(fetchedExpenses.reduce((sum, expense) => sum + (expense.amount || 0), 0));
             })
             .catch((error) => {
                 console.error('Error fetching expenses:', error);
             });
     };
 
-    // const fetchFilteredExpenses = (startDate, endDate) => {
-    //     axios.get('/expenses/filter', { params: { startDate, endDate } })
-    //         .then((response) => {
-    //             const filteredExpenses = response.data.expenses;
-    //             setExpenses(filteredExpenses); // Update the list of expenses
-    //             setTotalAmount(calculateTotalAmount(filteredExpenses)); // Update the total amount
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error filtering expenses:', error);
-    //         });
-    // };
+    const fetchFilteredExpenses = (startDate, endDate) => {
+        console.log("Filtering expenses with", startDate, endDate);
+        axios.get('/expenses/filter', { params: { startDate, endDate } })
+            .then((response) => {
+                console.log('Filtered Expenses Response:', response.data);
+                const filteredExpenses = response.data.expenses;
+                setExpenses(filteredExpenses);
+                setTotalAmount(response.data.totalAmount); // Set the total amount from the response
+            })
+            .catch((error) => {
+                console.error('Error filtering expenses:', error);
+            });
+    };
 
     // Delete an expense
     const deleteExpense = async (id) => {
@@ -71,19 +69,30 @@ const ExpenseManager = () => {
         }
     };
 
+    const handleClear = () => {
+        fetchExpenses(); // Fetch all expenses without filter
+    };
+
     useEffect(() => {
         fetchExpenses();
         fetchCategories();
-        // fetchFilteredExpenses();
     }, []);
 
     return (
         <div className="max-w-4xl mx-auto p-4">
             <h1 className="text-2xl font-semibold text-center mb-6">Expense Manager</h1>
+
+            {/* Display Total Amount */}
             <div className="mb-4 text-lg font-medium">
-                {/*Total Expenses: <span className="text-blue-600">{totalAmount} UAH</span>*/}
+                <span>Total Expenses: </span>
+                <span className="text-blue-600">{totalAmount} UAH</span>
             </div>
-            {/*<FilterExpenses fetchFilteredExpenses={fetchFilteredExpenses} />*/}
+
+            <FilterExpenses
+                fetchFilteredExpenses={fetchFilteredExpenses}
+                handleClear={handleClear}
+            />
+
             <AddExpense fetchExpenses={fetchExpenses}/>
             <ExpenseList
                 expenses={expenses}
