@@ -32,9 +32,9 @@ const ExpenseManager = () => {
             });
     };
 
-    const fetchFilteredExpenses = (startDate, endDate) => {
-        console.log("Filtering expenses with", startDate, endDate);
-        axios.get('/expenses/filter', { params: { startDate, endDate } })
+    const fetchFilteredExpenses = (startDate, endDate, category) => {
+        console.log("Filtering expenses with", startDate, endDate, category);
+        axios.get('/expenses/filter', { params: { startDate, endDate, category } })
             .then((response) => {
                 console.log('Filtered Expenses Response:', response.data);
                 const filteredExpenses = response.data.expenses;
@@ -91,6 +91,7 @@ const ExpenseManager = () => {
             <FilterExpenses
                 fetchFilteredExpenses={fetchFilteredExpenses}
                 handleClear={handleClear}
+                categories={categories}
             />
 
             <AddExpense fetchExpenses={fetchExpenses}/>

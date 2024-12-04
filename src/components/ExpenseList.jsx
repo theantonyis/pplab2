@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { format } from 'date-fns';
 
 const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => {

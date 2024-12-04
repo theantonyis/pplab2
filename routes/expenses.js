@@ -59,7 +59,7 @@ router.delete('/delete/:id', async (req, res) => {
 
 router.get('/filter', async (req, res) => {
     try {
-        const { startDate, endDate } = req.query;
+        const { startDate, endDate, category} = req.query;
         const query = {};
 
         if (startDate) {
@@ -69,6 +69,10 @@ router.get('/filter', async (req, res) => {
         if (endDate) {
             query.createdAt = query.createdAt || {}; // Ensure query.date exists before adding $lte
             query.createdAt.$lte = new Date(endDate); // Add $lte for end date
+        }
+
+        if (category) {
+            query.category = category; // Filter by category
         }
 
         const expenses = await Expense.find(query).populate('category', 'name');
