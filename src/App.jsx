@@ -8,7 +8,6 @@ const App = () => {
         <div className="App">
           <Routes>
             <Route path="/" element={<ExpenseManager />} />
-            {/* Additional routes can be added here */}
           </Routes>
         </div>
       </Router>

@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 // Get all expenses
 router.get('/', async (req, res) => {
     try {
-        const expenses = await Expense.find();
+        const expenses = await Expense.find().populate('category', 'name');
         res.status(200).json(expenses);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -34,13 +34,13 @@ router.get('/', async (req, res) => {
 });
 
 // Update an expense
-router.put('/api/expenses/edit/:id', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     try {
         const updatedExpense = await Expense.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
-        );
+        ).populate('category');
         res.status(200).json(updatedExpense);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -48,7 +48,7 @@ router.put('/api/expenses/edit/:id', async (req, res) => {
 });
 
 // Delete an expense
-router.delete('/api/expenses/delete/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         await Expense.findByIdAndDelete(req.params.id);
         res.status(200).json({ message: 'Expense deleted successfully' });

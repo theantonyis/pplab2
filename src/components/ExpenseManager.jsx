@@ -6,16 +6,17 @@ import ExpenseList from './ExpenseList';
 
 const ExpenseManager = () => {
     const [expenses, setExpenses] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-    // Fetch all expenses from the API
-    // const fetchExpenses = async () => {
-    //     try {
-    //         const response = await axios.get('/');
-    //         setExpenses(response.data);
-    //     } catch (error) {
-    //         console.error('Error fetching expenses:', error);
-    //     }
-    // };
+    const fetchCategories = () => {
+        axios.get('/categories')
+            .then((response) => {
+                setCategories(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching categories:', error);
+            });
+    };
 
     const fetchExpenses = () => {
         axios.get('/expenses')
@@ -51,7 +52,8 @@ const ExpenseManager = () => {
     };
 
     useEffect(() => {
-        fetchExpenses(); // Simply call the function without async/await
+        fetchExpenses();
+        fetchCategories();
     }, []);
 
     return (
@@ -62,6 +64,7 @@ const ExpenseManager = () => {
                 expenses={expenses}
                 deleteExpense={deleteExpense}
                 updateExpense={updateExpense}
+                categories={categories}
             />
         </div>
     );

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
-const ExpenseList = ({ expenses, deleteExpense, updateExpense }) => {
+const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => {
     const [editMode, setEditMode] = useState(false);
     const [selectedExpense, setSelectedExpense] = useState(null);
 
     const handleEditClick = (expense) => {
         setEditMode(true);
-        setSelectedExpense(expense);
+        setSelectedExpense({
+            ...expense,
+            category: expense.category._id  // Set the category as the category ID, not the whole object
+        });
     };
 
     const handleSaveClick = () => {
-        updateExpense(selectedExpense._id, selectedExpense);
+        const updatedExpense = {
+            ...selectedExpense,
+            category: categories.find(cat => cat._id === selectedExpense.category)  // Find the full category object
+        };
+        updateExpense(updatedExpense._id, updatedExpense);
         setEditMode(false);
         setSelectedExpense(null);
     };
@@ -19,50 +26,72 @@ const ExpenseList = ({ expenses, deleteExpense, updateExpense }) => {
         setSelectedExpense({ ...selectedExpense, [e.target.name]: e.target.value });
     };
 
+    const handleCategoryChange = (e) => {
+        setSelectedExpense({ ...selectedExpense, category: e.target.value });
+    };
+
     return (
-        <div>
+        <div className="bg-white shadow-md p-6 rounded-md">
             <ul className="space-y-4">
                 {expenses.map((expense) => (
-                    <li key={expense._id} className="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow-sm">
+                    <li key={expense._id} className="flex items-center justify-between border-b py-4">
                         {editMode && selectedExpense._id === expense._id ? (
-                            <>
-                                <input
-                                    type="text"
-                                    name="category"
-                                    value={selectedExpense.category}
-                                    onChange={handleChange}
-                                    className="p-2 border rounded-md mr-2"
-                                />
-                                <input
-                                    type="number"
-                                    name="amount"
-                                    value={selectedExpense.amount}
-                                    onChange={handleChange}
-                                    className="p-2 border rounded-md mr-2"
-                                />
-                                <input
-                                    type="text"
-                                    name="description"
-                                    value={selectedExpense.description}
-                                    onChange={handleChange}
-                                    className="p-2 border rounded-md mr-2"
-                                />
-                                <button
-                                    onClick={handleSaveClick}
-                                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-                                >
-                                    Save
-                                </button>
-                            </>
+                            <div className="flex flex-col space-y-3 w-full">
+                                <div className="flex space-x-3">
+                                    <input
+                                        type="number"
+                                        name="amount"
+                                        value={selectedExpense.amount}
+                                        onChange={handleChange}
+                                        className="p-2 border rounded-md flex-grow"
+                                    />
+
+                                    <select
+                                        name="category"
+                                        value={selectedExpense.category}
+                                        onChange={handleCategoryChange}
+                                        className="p-2 border rounded-md flex-grow"
+                                    >
+                                        {categories.map((category) => (
+                                            <option key={category._id} value={category._id}>
+                                                {category.name}
+                                            </option>
+                                        ))}
+                                    </select>
+
+                                    <input
+                                        type="text"
+                                        name="description"
+                                        value={selectedExpense.description}
+                                        onChange={handleChange}
+                                        className="p-2 border rounded-md flex-grow"
+                                    />
+                                    <button
+                                        onClick={handleSaveClick}
+                                        className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                    >
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
                         ) : (
-                            <>
-                                <span className="font-medium">{expense.category}</span>
-                                <span>${expense.amount}</span>
-                                <span className="text-gray-600">{expense.description}</span>
-                                <div>
+                            <div className="flex space-x-4 w-full items-center">
+                                <div className="flex flex-col w-2/5">
+                                    <span className="font-medium text-gray-700">Amount</span>
+                                    <span className="text-lg text-gray-800">{expense.amount} UAH</span>
+                                </div>
+                                <div className="flex flex-col w-2/5">
+                                    <span className="font-medium text-gray-700">Category</span>
+                                    <span className="text-lg text-gray-800">{expense.category.name}</span>
+                                </div>
+                                <div className="flex flex-col w-1/5">
+                                    <span className="font-medium text-gray-700">Description</span>
+                                    <span className="text-lg text-gray-800">{expense.description}</span>
+                                </div>
+                                <div className="flex space-x-3">
                                     <button
                                         onClick={() => handleEditClick(expense)}
-                                        className="mr-2 px-3 py-1 bg-yellow-400 text-white rounded-md hover:bg-yellow-500"
+                                        className="px-3 py-1 bg-yellow-400 text-white rounded-md hover:bg-yellow-500"
                                     >
                                         Edit
                                     </button>
@@ -73,7 +102,7 @@ const ExpenseList = ({ expenses, deleteExpense, updateExpense }) => {
                                         Delete
                                     </button>
                                 </div>
-                            </>
+                            </div>
                         )}
                     </li>
                 ))}
