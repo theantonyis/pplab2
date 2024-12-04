@@ -30,6 +30,10 @@ const ExpenseList = ({ expenses, deleteExpense, updateExpense, categories }) => 
         setSelectedExpense({ ...selectedExpense, category: e.target.value });
     };
 
+    if (!expenses || expenses.length === 0) {
+        return <p className="text-center text-gray-500">No expenses found for this period.</p>;
+    }
+
     return (
         <div className="bg-white shadow-md p-6 rounded-md">
             <ul className="space-y-4">

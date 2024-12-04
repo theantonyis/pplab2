@@ -57,4 +57,31 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
+router.get('/filter', async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query;
+        const query = {};
+
+        if (startDate) {
+            query.date = { $gte: new Date(startDate) }; // Add $gte for start date
+        }
+
+        if (endDate) {
+            query.date = query.date || {}; // Ensure query.date exists before adding $lte
+            query.date.$lte = new Date(endDate); // Add $lte for end date
+        }
+
+        // console.log('Query:', query);
+
+        const expenses = await Expense.find(query).populate('category', 'name');
+        const totalAmount = expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0);
+
+        res.status(200).json({ expenses, totalAmount });
+    } catch (error) {
+        console.error('Error filtering expenses:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 module.exports = router;
