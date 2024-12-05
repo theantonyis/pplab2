@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 // Get all expenses
 router.get('/', async (req, res) => {
     try {
-        const expenses = await Expense.find().populate('category');
+        const expenses = await Expense.find().populate('category', 'name');
         res.status(200).json(expenses);
     } catch (error) {
         res.status(500).json({ message: error.message });

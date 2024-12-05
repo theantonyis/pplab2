@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="some changes to chart&#10;to-do:&#10;export to pdf/csv (partly)">
+    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="final final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/expenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/expenses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ExpenseList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/exportFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/exportFunctions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +105,8 @@
       <workItem from="1733393095537" duration="289000" />
       <workItem from="1733393397020" duration="8825000" />
       <workItem from="1733412586327" duration="19000" />
-      <workItem from="1733412613644" duration="4177000" />
+      <workItem from="1733412613644" duration="4559000" />
+      <workItem from="1733422190548" duration="1264000" />
     </task>
     <task id="LOCAL-00001" summary="working version">
       <option name="closed" value="true" />
@@ -163,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733416691617</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="final">
+      <option name="closed" value="true" />
+      <created>1733418886217</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733418886217</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +197,8 @@
     <MESSAGE value="filter by categories and dates&#10;to-do:&#10;filter date to date (done)&#10;filter and search by categories and dates (done)&#10;export to pdf/csv" />
     <MESSAGE value="created chart for amount&#10;to-do:&#10;filter date to date (done)&#10;filter and search by categories and dates (done)&#10;export to pdf/csv (partly)" />
     <MESSAGE value="some changes to chart&#10;to-do:&#10;export to pdf/csv (partly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes to chart&#10;to-do:&#10;export to pdf/csv (partly)" />
+    <MESSAGE value="final" />
+    <MESSAGE value="final final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final final" />
   </component>
 </project>

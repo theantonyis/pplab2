@@ -6,17 +6,16 @@ export const exportToCSV = (data, filename = 'report.csv') => {
         return;
     }
 
-    const header = ['ID', 'Amount', 'Category', 'Date'];
+    const header = ['Amount', 'Category', 'Date'];
     const escapeCSV = (value) => (typeof value === 'string' ? `"${value.replace(/"/g, '""')}"` : value);
 
     const rows = data.map(row => [
-        escapeCSV(row._id || 'N/A'),
         escapeCSV(row.amount || 'N/A'),
         escapeCSV(row.category?.name || 'N/A'),
         escapeCSV(row.createdAt ? format(new Date(row.createdAt), 'yyyy-MM-dd') : 'N/A')
     ]);
 
-    const csvContent = [header.join(','), ...rows.map(row => row.join(','))].join('\n');
+    const csvContent = [header.join(','), ...rows.map(row => row.join(', '))].join('\n');
     const blob = new Blob([`\uFEFF${csvContent}`], { type: 'text/csv;charset=utf-8;' });
 
     const link = document.createElement('a');
