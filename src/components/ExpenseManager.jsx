@@ -4,6 +4,8 @@ import axios from '../axios';
 import AddExpense from './AddExpense';
 import ExpenseList from './ExpenseList';
 import FilterExpenses from './FilterExpenses';
+import Dashboard from './Dashboard';
+import ReportExport from './ReportExport';
 
 const ExpenseManager = () => {
     const [expenses, setExpenses] = useState([]);
@@ -101,6 +103,12 @@ const ExpenseManager = () => {
                 updateExpense={updateExpense}
                 categories={categories}
             />
+
+            {/* Add the Dashboard component here */}
+            <Dashboard expenses={expenses}/>
+
+            {/* Add the ReportExport component here */}
+            <ReportExport expenses={expenses} />
         </div>
     );
 };
