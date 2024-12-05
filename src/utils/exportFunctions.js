@@ -1,4 +1,6 @@
 import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { format } from 'date-fns';
 
 export const exportToCSV = (data, filename = 'report.csv') => {
     if (!Array.isArray(data) || data.length === 0) {
@@ -6,12 +8,19 @@ export const exportToCSV = (data, filename = 'report.csv') => {
         return;
     }
 
-    const header = Object.keys(data[0]).join(',');  // Use the keys of the first object as the header
-    const rows = data.map(row => Object.values(row).join(','));  // Convert each row to a CSV string
-    const csvContent = [header, ...rows].join('\n');  // Join header and rows with newline
+    const header = ['ID', 'Amount', 'Category', 'Date'];
+    const escapeCSV = (value) => (typeof value === 'string' ? `"${value.replace(/"/g, '""')}"` : value);
 
-    // Create a Blob and trigger download
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const rows = data.map(row => [
+        escapeCSV(row._id || 'N/A'),
+        escapeCSV(row.amount || 'N/A'),
+        escapeCSV(row.category?.name || 'N/A'),
+        escapeCSV(row.createdAt ? format(new Date(row.createdAt), 'yyyy-MM-dd') : 'N/A')
+    ]);
+
+    const csvContent = [header.join(','), ...rows.map(row => row.join(','))].join('\n');
+    const blob = new Blob([`\uFEFF${csvContent}`], { type: 'text/csv;charset=utf-8;' });
+
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -25,37 +34,27 @@ export const exportToPDF = (data, filename = 'report.pdf') => {
     }
 
     const doc = new jsPDF();
-    doc.setFontSize(12);
-    doc.text('Expense Report', 14, 10);  // Title
-    doc.text('--------------------', 14, 12);  // Divider
 
-    // Create table headers
-    const headers = ['Name', 'Amount', 'Category', 'Date'];
+    // Title
+    doc.setFontSize(16);
+    doc.text('Expense Report', 14, 10);
+
+    // Table Headers and Data
+    const headers = ['ID', 'Amount', 'Category', 'Date'];
     const rows = data.map(expense => [
-        expense.name || 'N/A', // Handle missing name
-        expense.amount || 'N/A', // Handle missing amount
-        expense.category && expense.category.name ? expense.category.name : 'N/A', // Handle missing category name
-        expense.category && expense.category.description ? expense.category.description : 'N/A', // Handle missing category description
-        expense.createdAt ? expense.createdAt.toString() : 'N/A' // Handle missing or invalid date
+        expense._id || 'N/A',
+        expense.amount || 'N/A',
+        expense.category?.name || 'N/A',
+        expense.createdAt ? format(new Date(expense.createdAt), 'yyyy-MM-dd') : 'N/A'
     ]);
 
-    // Table position
-    const startX = 14;
-    const startY = 20;
-    const rowHeight = 10;
-
-    // Add headers to the PDF
-    headers.forEach((header, index) => {
-        doc.text(header, startX + (index * 40), startY);
+    autoTable(doc, {
+        head: [headers],
+        body: rows,
+        startY: 20, // Position table below the title
+        styles: { fontSize: 10, overflow: 'linebreak', cellPadding: 3 }, // Prevent text overlap
+        headStyles: { fillColor: [0, 57, 107] }, // Custom header color
     });
 
-    // Add rows to the PDF
-    rows.forEach((row, rowIndex) => {
-        row.forEach((cell, cellIndex) => {
-            doc.text(cell.toString(), startX + (cellIndex * 40), startY + (rowIndex + 1) * rowHeight);
-        });
-    });
-
-    // Save the PDF
     doc.save(filename);
 };

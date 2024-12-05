@@ -32,6 +32,14 @@ const AddExpense = ({ fetchExpenses }) => {
         }
     };
 
+    const handleAmountChange = (e) => {
+        // Ensure that the amount is greater than or equal to zero
+        const value = e.target.value;
+        if (value > 0 || value === '') {
+            setAmount(value);
+        }
+    };
+
     useEffect(() => {
         fetchCategories(); // Simply call the function without async/await
     }, []);
@@ -43,9 +51,10 @@ const AddExpense = ({ fetchExpenses }) => {
                 <input
                     type="number"
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={handleAmountChange}
                     required
                     className="mt-1 p-2 w-full border rounded-md"
+                    min="0"
                 />
             </div>
             <div className="mb-4">

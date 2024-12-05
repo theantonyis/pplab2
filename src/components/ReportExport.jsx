@@ -1,19 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { exportToCSV, exportToPDF } from '../utils/exportFunctions';
 
-const ReportExport = ({ expenses }) => {
-    // const [expenses, setExpenses] = useState([]);
-    //
-    // useEffect(() => {
-    //     // Fetch data from MongoDB using .then
-    //     axios.get('/expenses')  // Replace with your MongoDB endpoint
-    //         .then(response => {
-    //             setExpenses(response.data);  // Set the fetched data into state
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching data:', error);  // Handle any errors
-    //         });
-    // }, []);
+const ReportExport = ({expenses}) => {
 
     const handleExportCSV = () => {
         if (expenses.length > 0) {
