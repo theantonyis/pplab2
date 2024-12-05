@@ -1,5 +1,3 @@
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 import { format } from 'date-fns';
 
 export const exportToCSV = (data, filename = 'report.csv') => {
@@ -25,36 +23,4 @@ export const exportToCSV = (data, filename = 'report.csv') => {
     link.href = URL.createObjectURL(blob);
     link.download = filename;
     link.click();
-};
-
-export const exportToPDF = (data, filename = 'report.pdf') => {
-    if (!Array.isArray(data) || data.length === 0) {
-        console.error('Invalid data provided for PDF export');
-        return;
-    }
-
-    const doc = new jsPDF();
-
-    // Title
-    doc.setFontSize(16);
-    doc.text('Expense Report', 14, 10);
-
-    // Table Headers and Data
-    const headers = ['ID', 'Amount', 'Category', 'Date'];
-    const rows = data.map(expense => [
-        expense._id || 'N/A',
-        expense.amount || 'N/A',
-        expense.category?.name || 'N/A',
-        expense.createdAt ? format(new Date(expense.createdAt), 'yyyy-MM-dd') : 'N/A'
-    ]);
-
-    autoTable(doc, {
-        head: [headers],
-        body: rows,
-        startY: 20, // Position table below the title
-        styles: { fontSize: 10, overflow: 'linebreak', cellPadding: 3 }, // Prevent text overlap
-        headStyles: { fillColor: [0, 57, 107] }, // Custom header color
-    });
-
-    doc.save(filename);
 };
