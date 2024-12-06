@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="final final">
+    <list default="true" id="d3bfad3d-6738-408d-9ca3-40427ebca911" name="Changes" comment="final final final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/expenses.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/expenses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ExpenseList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExpenseManager.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/exportFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/exportFunctions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/theantonyis/pplab2.git&quot;,
-    &quot;accountId&quot;: &quot;eb489c0d-9cc7-47a1-af73-a2101a7d6955&quot;
+    &quot;accountId&quot;: &quot;b7318406-7329-41c7-aefc-a1e2b98c9ee8&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -62,22 +60,22 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;23.3.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.10.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/antony/WebstormProjects/todo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/pplab2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\antony\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\toolbox\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -107,6 +105,11 @@
       <workItem from="1733412586327" duration="19000" />
       <workItem from="1733412613644" duration="4559000" />
       <workItem from="1733422190548" duration="1264000" />
+      <workItem from="1733429724715" duration="6879000" />
+      <workItem from="1733437624376" duration="7000" />
+      <workItem from="1733480568945" duration="394000" />
+      <workItem from="1733481006553" duration="680000" />
+      <workItem from="1733483569543" duration="2016000" />
     </task>
     <task id="LOCAL-00001" summary="working version">
       <option name="closed" value="true" />
@@ -199,6 +202,7 @@
     <MESSAGE value="some changes to chart&#10;to-do:&#10;export to pdf/csv (partly)" />
     <MESSAGE value="final" />
     <MESSAGE value="final final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final final" />
+    <MESSAGE value="final final final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final final final" />
   </component>
 </project>
